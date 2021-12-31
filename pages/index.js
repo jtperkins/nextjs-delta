@@ -1,34 +1,18 @@
 import Head from 'next/head'
 
-import Post from '../components/post'
-
-export async function getStaticProps() {
-  // fetch list of posts
-  const response = await fetch(
-    'https://jsonplaceholder.typicode.com/posts?_page=1'
-  )
-  const postList = await response.json()
-  return {
-    props: {
-      postList,
-    },
-  }
-}
-
-export default function IndexPage({ postList }) {
+export default function IndexPage() {
   return (
     <main>
       <Head>
         <title>Home page</title>
       </Head>
 
-      <h1>List of posts</h1>
+      <div className='min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-black font-sans'>
+        <div className='w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg'>
+          <h1 className='text-5xl text-center'>Delta Edibles coming soon!</h1>
+        </div>
+      </div>
 
-      <section>
-        {postList.map((post) => (
-          <Post {...post} key={post.id} />
-        ))}
-      </section>
     </main>
   )
 }
